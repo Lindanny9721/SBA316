@@ -35,6 +35,23 @@ navbar.appendChild(signInDropdown);
 function toggleDropdown() {
     signInDropdown.classList.toggle("hidden");
 }
+var menu = [
+    {name: "Miso Ramen", price: "10.99$"},
+    {name: "Spicy Ramen", price: "11.99$"},
+    {name: "Chicken Ramen", price: "10.99$"},
+    {name: "Fish Ramen", price: "12.99$"},
+    {name: "Chicken", price: "5.99$"},
+    {name: "Fried Potatoes", price: "4.99$"},
+    {name: "Miso Soup", price: "2.99$"},
+    {name: "Californa Roll", price: "9.99$"},
+    {name: "Eel Roll", price: "10.99$"},
+    {name: "Salmon Roll", price: "12.99$"},
+]
+let list = document.querySelectorAll(".menu-column li");
+for (let i = 0; i < list.length; i++)
+    {
+        list[i].innerHTML = `${menu[i].name} <span class= "price">${menu[i].price}</span>`;
+    }
 document.getElementById('signin').addEventListener('submit', function(event) {
     event.preventDefault();
     const email = document.getElementById('email').value;
@@ -56,23 +73,15 @@ document.getElementById('signin').addEventListener('submit', function(event) {
         return;
     }
     signInDropdown.classList.add("hidden");
+    let signIn = navbar.lastChild.previousSibling;
+    signIn.innerHTML = "Signed In";
+    signInDropdown.innerHTML = 
+    `<form id="signout">
+        <button type="submit">Sign Out</button>
+    </form>`
 });
-var menu = [
-    {name: "Miso Ramen", price: "10.99$"},
-    {name: "Spicy Ramen", price: "11.99$"},
-    {name: "Chicken Ramen", price: "10.99$"},
-    {name: "Fish Ramen", price: "12.99$"},
-    {name: "Chicken", price: "5.99$"},
-    {name: "Fried Potatoes", price: "4.99$"},
-    {name: "Miso Soup", price: "2.99$"},
-    {name: "Californa Roll", price: "9.99$"},
-    {name: "Eel Roll", price: "10.99$"},
-    {name: "Salmon Roll", price: "12.99$"},
-]
-let list = document.querySelectorAll("li");
-for (let i = 0; i < list.length; i++)
-    {
-        list[i].innerHTML = `${menu[i].name} <span class= "price">${menu[i].price}</span>`;
-    }
-let priceStyle = document.querySelector(".price");
-priceStyle.style.fontWeight = "bold";
+document.getElementById('signout').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let signIn = navbar.lastChild.previousSibling;
+    signIn.innerHTML = "Sign In";
+});

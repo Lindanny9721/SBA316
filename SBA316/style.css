@@ -70,3 +70,6 @@ body {
     justify-content: space-between; 
     padding: 5px 0;  
 }
+.price {
+    font-weight: bold;
+}
